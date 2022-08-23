@@ -1,4 +1,4 @@
-# Web scraping
+# Scraping HTML with Beautiful Soup
 
 ## Learning Goals
 
