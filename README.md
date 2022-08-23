@@ -438,7 +438,6 @@ Let's take another look at the element returned to us by our call on the `.selec
 method. In the previous example, we had many `Beautiful Soup` objects to iterate
  over. Looking at just the first one:
 
-
 ```py
 
 courses = doc.select('.heading-60-black.color-black.mb-20')[0]
