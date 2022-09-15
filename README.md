@@ -10,7 +10,7 @@
 ## Key Vocab
 
 - **Web scraping**: Web scraping, web harvesting, or web data extraction is
- data scraping used for extracting data from websites
+ data scraping used for extracting data from websites.
 - **HTML**: The HyperText Markup Language or HTML is the standard markup
  language for documents designed to be displayed in a web browser.
 - **CSS**: Cascading Style Sheets is a style sheet language used for
@@ -31,7 +31,7 @@ A more thorough code-along is coming up next, but if you would like to follow
 along, `lib/scraper.py` is provided for you.
 
 You can use the `pipenv install` command to use the virtual environment
-to run your code
+to run your code.
 
 ***
 
@@ -72,7 +72,7 @@ let's talk about _how_ to scrape.
 
 [Requests][] is a module in Python that allows us to programmatically make HTTP
 requests. It gives us a bunch of useful methods to make different types of
-requests, but for this guide, we're interested in only one: `get`. This method
+requests, but for this guide, we're only interested in one right now: `get`. This method
 takes one argument, a URL, and will return to us the HTML content of that URL.
 
 [requests]: https://requests.readthedocs.io/en/latest/
@@ -94,11 +94,11 @@ Beautiful Soup is a Python package for parsing HTML and XML documents. It
   HTML, which is useful for web scraping. Put simply, BeautifulSoup takes
   in HTML and spits out a collection of objects we can get information from.
 
-![Beautiful Soup Scraping](https://curriculum-content.s3.amazonaws.com/scraping-reading/Image_11_CodeScraping.pn)
-
 The HTML that would normally be rendered as a webpage can be scraped with
 Beautiful Soup into a many small pieces. Beautiful Soup makes the level of
 precision required to extract the necessary data much easier to attain.
+
+Beautiful Soup transforms a complex HTML document into a complex tree of Python objects. But you’ll only ever have to deal with about four kinds of objects: Tag, NavigableString, BeautifulSoup, and Comment.
 
 Let's get Beautiful Soup up and running and look at a very basic example of its usage.
 Then, we'll move on to the next lesson, where you'll try it out for yourself.
@@ -120,7 +120,7 @@ import requests
 ```
 
 We can use the following line to grab the HTML that makes up the Flatiron
-School's landing page at flatironschool.com:
+School's landing page at `flatironschool.com`:
 
 ```python
 headers = {'user-agent': 'my-app/0.0.1'}
@@ -136,7 +136,7 @@ html = requests.get("https://flatironschool.com/", headers=headers)
 ```
 
 Next, we'll create a Beautiful Soup object to take the string of HTML returned
-by requests's `get` method which represents the document as a nested data structure
+by requests's `get` method which represents the document as a nested data structure.
 
 Let's save the HTML document in a variable, `doc` that we can then operate on:
 
@@ -209,7 +209,7 @@ access elements within the nested structure.
 
 ### Using Beautiful Soup to Extract Data
 
-**Note**: For this reading, we'll be using the Flatiron School website. However,
+> **Note**: For this reading, we'll be using the Flatiron School website. However,
 how you scrape a page is **very specific to the content of the page you are
 trying to scrape**. That means that if the webpage you wrote certain scraping
 code for ever changes, your scraping code will likely no longer work correctly.
@@ -228,7 +228,7 @@ inspect the page. (You can just right-click anywhere on the page and select
 
 You should see something like this:
 
-![browser console example](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_console_example_01.pn)
+![browser console example](https://curriculum-content.s3.amazonaws.com/flatiron_homepage.png)
 
 The [element inspector][] view on the bottom half of the page is revealing all of
 the page's HTML to us! In fact, the HTML it is showing us is _exactly the same_
@@ -274,7 +274,7 @@ Remember that the HTML document that Beautiful Soup retrieved for us to operate
 inspector to find the selector of a certain piece of our HTML. In this case,
 we'll look the element containing the text '10 years of shaping tech talent':
 
-![element inspector](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_inspect_css.pn)
+![element inspector](https://curriculum-content.s3.amazonaws.com/flatiron_homepage.png)
 
 In order to identify the CSS selector, click the button in the upper left corner
  of the console pane that looks like a mouse icon partially in a box.
@@ -371,7 +371,7 @@ scrape the titles of all courses from these elements.
 
 [page]: flatironschool.com
 
-![courses](https://curriculum-content.s3.amazonaws.com/web-development/ruby/scraping_flatironschool_courses.pn)
+![courses](https://curriculum-content.s3.amazonaws.com/flatiron_courses.png)
 
 This time, if we hover over one of the elements containing a course, we'll see
 there are three classes assigned, `heading-60-black`,
@@ -396,7 +396,6 @@ Notice that each class is listed without spaces!
 
 Even though the Beautiful Soup returns a `bs4.element.ResultSet` (which looks
 like an list in Python). We can iterate over the elements like a list.
-
 
 ```html
 [<h2 class="heading-60-black color-black mb-20">
@@ -429,8 +428,7 @@ Cybersecurity Engineering
 ```
 
 Not _exactly_ the course listing as it scraped some other content as well - a
-great example how tricky scraping can be - but we've still achieved
-iteration!
+great example how tricky scraping can be - but we've still looped through/iterated through html elements!
 
 ### Operating on bs4.element.ResultSet
 
@@ -475,7 +473,6 @@ doc.select('.heading-60-black.color-black.mb-20')[0].attrs
 Since this example doesn't have any attributes besides the CSS classes, we just
 get back the classes we already know:
 
-
 ```text
 {'class': ['heading-60-black', 'color-black', 'mb-20']}
 ```
@@ -509,7 +506,7 @@ be time-consuming or otherwise very difficult to collect. Taking a little time
 to update a scraper is typically much easier and faster than manually updating
 data.
 
-**Note**: One final note about scraping - the content we're getting by scraping
+> **Note**: One final note about scraping - the content we're getting by scraping
 is all technically publicly available, as it all visible on public websites. Be
 careful, however, as some content may not be used without permission or
 licensing. Images, for instance, often belong to someone and can have a license
@@ -525,3 +522,4 @@ image `src` attributes from a site!
   even get some practice with simple examples. If you felt really confused by
   this reading, we recommend checking it out before moving on.
   - [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+  - [Requests](https://requests.readthedocs.io/en/latest/)
