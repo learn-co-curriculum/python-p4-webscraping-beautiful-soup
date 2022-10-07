@@ -123,12 +123,11 @@ We can use the following line to grab the HTML that makes up the Flatiron
 School's landing page at `flatironschool.com`:
 
 ```python
-headers = {'user-agent': 'my-app/0.0.1'}
 html = requests.get("https://flatironschool.com/", headers=headers)
 ```
 
-if you get a 403 Forbidden error. The website may be trying to prevent bots.
-You may need to define a headers with `user-agent`.
+If you get a 403 Forbidden error, the website may be trying to prevent bots.
+You may need to define headers with `user-agent`.
 
 ```python
 headers = {'user-agent': 'my-app/0.0.1'}
