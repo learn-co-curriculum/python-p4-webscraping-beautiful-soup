@@ -2,8 +2,8 @@
 
 ## Learning Goals
 
-- Introduce web scraping and its usages.
-- Learn how to use BeautifulSoup to scrape data from an HTML document.
+- Introduce web scraping and its uses.
+- Retrieve data from an HTML document through web scraping.
 
 ***
 
@@ -30,8 +30,8 @@ scraping is and how to accomplish it.
 A more thorough code-along is coming up next, but if you would like to follow
 along, `lib/scraper.py` is provided for you.
 
-You can use the `pipenv install` command to use the virtual environment
-to run your code.
+You can use the `pipenv install && pipenv shell` command to enter the virtual
+environment to run your code.
 
 ***
 
@@ -70,10 +70,11 @@ let's talk about _how_ to scrape.
 
 ### Refresher: What is requests?
 
-[Requests][] is a module in Python that allows us to programmatically make HTTP
+[requests][] is a module in Python that allows us to programmatically make HTTP
 requests. It gives us a bunch of useful methods to make different types of
-requests, but for this guide, we're only interested in one right now: `get`. This method
-takes one argument, a URL, and will return to us the HTML content of that URL.
+requests, but for this guide, we're only interested in one right now: `get`.
+This methodtakes one argument, a URL, and will return to us the HTML content of
+that URL.
 
 [requests]: https://requests.readthedocs.io/en/latest/
 
@@ -98,14 +99,17 @@ The HTML that would normally be rendered as a webpage can be scraped with
 Beautiful Soup into a many small pieces. Beautiful Soup makes the level of
 precision required to extract the necessary data much easier to attain.
 
-Beautiful Soup transforms a complex HTML document into a complex tree of Python objects. But you’ll only ever have to deal with about four kinds of objects: Tag, NavigableString, BeautifulSoup, and Comment.
+Beautiful Soup transforms a complex HTML document into a complex tree of Python
+objects. But you’ll only ever have to deal with about four kinds of objects:
+`Tag`, `NavigableString`, `BeautifulSoup`, and `Comment`.
 
 Let's get Beautiful Soup up and running and look at a very basic example of its usage.
 Then, we'll move on to the next lesson, where you'll try it out for yourself.
 
 ### Installing Beautiful Soup
 
-Installing Beautiful Soup is as easy as `pipenv install bs4`.
+Installing Beautiful Soup is as easy as `pipenv install bs4` (we've already done
+that for you here).
 
 ### Opening a Web Page as HTML with Beautiful Soup and requests
 
@@ -189,11 +193,11 @@ If you look through further, you can find the `body` with lots of content.
 ...
 ```
 
-On and on. It is _a lot_ to go through, and it can also look pretty messy and
-difficult to read. But don't worry! Beautiful Soup will help us parse this.
- What we're looking at here is all of the HTML that makes up the web page found at
-[www.flatironschool.com][]. The massive lines above are actually a snapshot of
-that HTML converted into a structure of nested nodes by Beautiful Soup.
+And on, and on. It is _a lot_ to go through, and it can also look pretty messy
+and difficult to read. But don't worry! Beautiful Soup will help us parse this.
+What we're looking at here is all of the HTML that makes up the web page found
+at [www.flatironschool.com][]. The massive lines above are actually a snapshot
+of that HTML converted into a structure of nested nodes by Beautiful Soup.
 
 [www.flatironschool.com]: http://flatironschool.com/
 
@@ -276,10 +280,10 @@ we'll look the element containing the text '10 years of shaping tech talent':
 ![element inspector](https://curriculum-content.s3.amazonaws.com/flatiron_homepage.png)
 
 In order to identify the CSS selector, click the button in the upper left corner
- of the console pane that looks like a mouse icon partially in a box.
+of the console pane that looks like a mouse icon partially in a box.
 
 Once activated, hover over the '10 years of shaping tech talent' text.
- This will highlight its HTML element for us. Notice that:
+This will highlight its HTML element for us. Notice that:
 
 ```html
 <h1> class="heading-financier ..." </h1>
@@ -358,13 +362,13 @@ It will return a list of `bs4.element.NavigableString` objects.
 We did it! We used Beautiful Soup to get the HTML of a web page. We used the element
 inspector in the browser to ID the CSS selector of the data we wanted to scrape.
 We used the `.select` Beautiful Soup method, along with that CSS selector,
- to grab the element that contains our desired data. Finally, we used the
-  `.contents` method to retrieve the desired text.
+to grab the element that contains our desired data. Finally, we used the
+`.contents` method to retrieve the desired text.
 
 ### Iterating over elements
 
 Sometimes we want to get a collection of the same elements, so we can iterate
-over them. For instance, a little further down the [page](https://flatironschool.com/) are some of the
+over them. For instance, a little further down the [page][page]] are some of the
 courses offered by Flatiron School. We can practice iterating by trying to
 scrape the titles of all courses from these elements.
 
@@ -389,6 +393,7 @@ html = requests.get("https://flatironschool.com/our-courses/", headers=headers)
 doc = BeautifulSoup(html.text, 'html.parser')
 
 print(doc.select('.heading-60-black.color-black.mb-20'))
+
 ```
 
 Notice that each class is listed without spaces!
