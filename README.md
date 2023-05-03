@@ -217,7 +217,7 @@ how you scrape a page is **very specific to the content of the page you are
 trying to scrape**. That means that if the webpage you wrote certain scraping
 code for ever changes, your scraping code will likely no longer work correctly.
 So, the Flatiron School website that this reading refers to **may have
-changed**! Some of the examples here may specific to an earlier version of the
+changed**! Some of the examples here may be specific to an earlier version of the
 site and won't work look or work exactly as shown when you try them out on your
 own. That's okay though. Just follow along with the reading and, if you want to
 try it out, feel free to use the examples provided to guide you in scraping
