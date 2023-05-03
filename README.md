@@ -73,7 +73,7 @@ let's talk about _how_ to scrape.
 [requests][] is a module in Python that allows us to programmatically make HTTP
 requests. It gives us a bunch of useful methods to make different types of
 requests, but for this guide, we're only interested in one right now: `get`.
-This methodtakes one argument, a URL, and will return to us the HTML content of
+This method takes one argument, a URL, and will return to us the HTML content of
 that URL.
 
 [requests]: https://requests.readthedocs.io/en/latest/
