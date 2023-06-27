@@ -368,11 +368,11 @@ to grab the element that contains our desired data. Finally, we used the
 ### Iterating over elements
 
 Sometimes we want to get a collection of the same elements, so we can iterate
-over them. For instance, a little further down the [page][page]] are some of the
+over them. For instance, a little further down the [page][page] are some of the
 courses offered by Flatiron School. We can practice iterating by trying to
 scrape the titles of all courses from these elements.
 
-[page]: flatironschool.com
+[page]: https://flatironschool.com
 
 ![courses](https://curriculum-content.s3.amazonaws.com/flatiron_courses.png)
 
